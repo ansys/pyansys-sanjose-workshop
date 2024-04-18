@@ -17,6 +17,7 @@ work_dir = os.path.join(os.getcwd(),"wdir")
 ansys_version = 241
 
 ### Construct Absolute File paths
+[os.makedirs(folder) for folder in ('wdir', 'outputs') if not os.path.exists(folder)]
 
 #Geometry file with Named Selections Defined
 geometryfilewithpath = os.path.join(inputs_dir,geom_file_name )
