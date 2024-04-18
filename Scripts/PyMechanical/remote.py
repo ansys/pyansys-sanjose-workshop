@@ -19,6 +19,8 @@ ansys_version = 241
 ### Construct Absolute File paths
 
 # Absolute path of script file with commands
+[os.makedirs(folder) for folder in ('wdir', 'outputs') if not os.path.exists(folder)]
+
 remote_commands_file = os.path.join(inputs_dir,mech_script_file )
 
 # Get executable Path for the above Ansys Version
