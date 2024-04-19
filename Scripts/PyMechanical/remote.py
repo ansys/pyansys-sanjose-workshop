@@ -1,3 +1,5 @@
+# ©2024, ANSYS Inc. Unauthorized use, distribution or duplication is prohibited.
+
 ### Imports
 
 from ansys.mechanical.core import launch_mechanical

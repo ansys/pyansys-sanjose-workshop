@@ -1,3 +1,6 @@
+# ©2024, ANSYS Inc. Unauthorized use, distribution or duplication is prohibited.
+
+
 import os
 
 inputs_dir = os.path.join(os.getcwd(),"inputs")
