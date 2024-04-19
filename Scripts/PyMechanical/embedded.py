@@ -1,3 +1,6 @@
+
+# ©2024, ANSYS Inc. Unauthorized use, distribution or duplication is prohibited.
+
 ### Imports
 
 import os
