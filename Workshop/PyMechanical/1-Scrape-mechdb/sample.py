@@ -1,6 +1,3 @@
-'''
-note - rename to pymechanical
-'''
 import os
 import typing
 
