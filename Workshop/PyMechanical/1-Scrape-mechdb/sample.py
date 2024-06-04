@@ -12,12 +12,37 @@ class Problems:
     WEAK_SPRINGS_ENABLED = "An analysis has weak springs enabled!"
 
 def has_weak_springs():
+    def _has_weak_springs(analysis):
+        return analysis.AnalysisSettings.WeakSprings == WeakSpringsType.On
+    for analysis in app.Model.Analyses:
+        if _has_weak_springs(analysis):
+            return True
     return False
 
 def has_rigid_beam():
+    def _is_rigid(beam):
+        if beam.Scope == SpringScopingType.BodyToBody:
+            if beam.ReferenceBehavior == LoadBehavior.Rigid:
+                return True
+        if beam.MobileBehavior == LoadBehavior.Rigid:
+            return True
+    for beam in app.DataModel.GetObjectsByType(DataModelObjectCategory.Beam):
+        if _is_rigid(beam):
+            # print(beam.Name + " is rigid")
+            return True
     return False
 
 def has_rigid_bearing():
+    def _is_rigid(bearing):
+        if bearing.ConnectionType == ConnectionScopingType.BodyToBody:
+            if bearing.ReferenceBehavior == LoadBehavior.Rigid:
+                return True
+        if bearing.MobileBehavior == LoadBehavior.Rigid:
+            return True
+    for bearing in app.DataModel.GetObjectsByType(DataModelObjectCategory.Bearing):
+        if _is_rigid(bearing):
+            # print(bearing.Name + " is rigid")
+            return True
     return False
 
 def get_problems(mechdb: str) -> typing.List[str]:
