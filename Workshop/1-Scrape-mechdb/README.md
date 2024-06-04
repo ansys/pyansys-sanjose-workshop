@@ -12,4 +12,13 @@ The analyst has identified a set of projects that may be affected. There are tho
 See `sample.py` for an outline of a python program. In the `Files` folder, there are some sample projects that may contain the above problems. Modify `sample.py` so that it prints out which projects are affected by which problems. Once you have done this, you can use it on the thousands of projects in the PLM system.
 
 # Expected result
-TODO
+AB_1.mechdb has the following problems:
+    A beam connection uses a rigid connection!
+AB_2.mechdb has no problems
+AB_3.mechdb has the following problems:
+    An analysis has weak springs enabled!
+AB_5.mechdb has the following problems:
+    A beam connection uses a rigid connection!
+OO_1.mechdb has no problems
+OO_2.mechdb has the following problems:
+    A bearing uses a rigid connection!
