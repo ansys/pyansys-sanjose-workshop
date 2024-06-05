@@ -27,9 +27,9 @@ See the `template-solved.mechdb` for the solved mechdb containing the below inpu
 cli.py --model Files/template.mechdb --input Files/bearing_data.json --velocities=1;1500;2600 --solve-point=2 --mode=3 --output sample.png
 
 Results:
-    Elapsed solution time: 3s
-    Maximum total deformation: 43.747mm
-    Minimum total deformation: 0mm
-    Standard deviation: 7.67224mm
+    Elapsed solution time: 3.0s
+    Maximum total deformation: 43.74699667096138mm
+    Minimum total deformation: 0.0mm
+    Standard deviation: 7.672245247399096mm
 
 ![expected image result](./Files/reference.png)
