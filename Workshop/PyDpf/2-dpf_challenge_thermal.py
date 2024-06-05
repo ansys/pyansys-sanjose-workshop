@@ -82,8 +82,6 @@ b) Total Heat Flow:  1.76  [W]
 from ansys.dpf import core as dpf
 from ansys.dpf.core.plotter import DpfPlotter
 import numpy as np
-import pyvista as pv
-pv.set_jupyter_backend('trame')
 
 
 # =========================================================================================
