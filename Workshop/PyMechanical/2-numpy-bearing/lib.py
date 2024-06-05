@@ -36,6 +36,7 @@ def _get_output(app) -> typing.Tuple[float, float, float, float]:
 def run(velocities: typing.List[float], mode: int, solve_point: int, model: str, input_dict: typing.Dict[str, str], output: str) -> None:
     """Run the full automation."""
     app=mech.App(version=241)
+    assert app.readonly is False, "Mechanical is readonly. Ensure that an appropriate license is available!"
     app.open(model)
     globals().update(mech.global_variables(app, True))
 
