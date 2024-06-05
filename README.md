@@ -9,10 +9,9 @@
     - Install ansys-dpf-core(PyDpf) and ansys-mechanical-core(PyMechanical) in this venv.
     - "Launch Console"
         - pip install pyvista[all]
-        - pip install trame
-        - pip install ipykernel
     - "Launch VS Code" (Recommended)
         - install these VS Code Extensions : Workshop\Miscellaneous\VSCode-Extensions
+        - restart VS Code
 
 
 #### About the contents of this Repository
