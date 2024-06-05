@@ -20,6 +20,8 @@ def _setup(app: mech.App, velocities: typing.List[float], input_dict: typing.Dic
     """Setup the problem.
     Apply the velocities to the Rotational Velocity object, apply the input_dict to the AUTO_BEARING object.
     """
+    # hint: the command to set a row of the rotational velocity Y component table looks like this:
+    #           rotational_velocity.YComponent.Output.DiscreteValues[0]=Quantity(1, '[rad/s]')
     pass
 
 

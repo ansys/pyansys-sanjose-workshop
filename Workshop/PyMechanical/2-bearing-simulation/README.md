@@ -1,7 +1,5 @@
 # Workshop 3: Bearing simulation
 
-# TODO - put screenshot of model here. Clear the template model.
-
 # Problem statement
 Implement the given Command Line interface (CLI).
 
