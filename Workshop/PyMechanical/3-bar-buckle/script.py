@@ -3,13 +3,32 @@
 note:
     when running inside mechanical (remote, ansys-mechanical CLI, and paste into script editor), the full path is needed.
     when running with embedding, the full path is not needed.
+
+    when running the remote interface, the print statements are ignored. Instead, the values can be accessed by running
+    code like this:
+
+    import ansys.mechanical.core as mech
+    mechanical = mech.launch_mechanical(batch=True, loglevel="DEBUG")
+    mechanical.run_python_script_from_file("path\\to\\script.py")
+    mechanical.run_python_script("buck_deformation_1.LoadMultiplier")
+    mechanical.exit()
 '''
+
+
+# embedding import block. If running in IronPython, this will do nothing.
+try:
+    import ansys.mechanical.core as mech
+    app = mech.App(version=241)
+    globals().update(mech.global_variables(app, True))
+except ImportError as e:
+    pass
+
 
 import os
 
 geometry_file = os.path.abspath(os.path.join(os.getcwd(), "Files", "Eng157.x_t"))
 if not os.path.isfile(geometry_file):
-    geometry_file = r"path\to\Eng157.x_t"
+    geometry_file = r"C:\AnsysDev\code\pyansys\Demo_Examples\Workshop\PyMechanical\3-bar-buckle\Files\Eng157.x_t"
 
 geometry_import = Model.GeometryImportGroup.AddGeometryImport()
 geometry_import.Import(geometry_file)
