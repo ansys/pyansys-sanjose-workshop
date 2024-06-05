@@ -5,7 +5,7 @@ from ansys.dpf.core.plotter import DpfPlotter
 Load result file and create model database
 """
 
-path = "WS03-6_file.rth"
+path = "transient_thermal.rth"
 
 ds = dpf.DataSources(path)
 my_model = dpf.Model(ds)
