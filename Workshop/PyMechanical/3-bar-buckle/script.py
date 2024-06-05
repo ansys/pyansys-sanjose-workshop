@@ -28,7 +28,7 @@ import os
 
 geometry_file = os.path.abspath(os.path.join(os.getcwd(), "Files", "Eng157.x_t"))
 if not os.path.isfile(geometry_file):
-    geometry_file = r"C:\AnsysDev\code\pyansys\Demo_Examples\Workshop\PyMechanical\3-bar-buckle\Files\Eng157.x_t"
+    geometry_file = r"path\to\Files\Eng157.x_t"
 
 geometry_import = Model.GeometryImportGroup.AddGeometryImport()
 geometry_import.Import(geometry_file)
