@@ -1,6 +1,9 @@
 from ansys.dpf import core as dpf
 from ansys.dpf.core.plotter import DpfPlotter
 
+#choose a version of server
+dpf.start_local_server(r"C:\Program Files\ANSYS Inc\v241")
+
 """
 Load result file and create model database
 """
