@@ -69,6 +69,8 @@ def validate_args(args) -> typing.Tuple[typing.List[float], int, int, str, typin
     if not (model.endswith(".mechdb") or model.endswith(".mechdat")):
         raise Exception("ERROR: The given model (--model) is not a valid file format. It must end in `.mechdb` or `.mechdat`!")
 
+    output = os.path.abspath(output)
+
     return velocities, mode, solve_point, model, input_dict, output
 
 
