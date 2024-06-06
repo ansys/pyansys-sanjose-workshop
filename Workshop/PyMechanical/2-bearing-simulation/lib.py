@@ -1,9 +1,13 @@
 import typing
 
 import ansys.mechanical.core as mech
+import numpy as np
 
 def _export_image(app: mech.App, output_path: str) -> None:
     """Export the image the given output path."""
+    deformation = DataModel.GetObjectsByType(DataModelObjectCategory.TotalDeformation)[0]
+    Tree.Activate(deformation)
+    ExtAPI.Graphics.Camera.SetSpecificViewOrientation(ViewOrientationType.Front)
     image_settings = Ansys.Mechanical.Graphics.GraphicsImageExportSettings()
     image_format = GraphicsImageExportFormat.PNG
     image_settings.Resolution = GraphicsResolutionType.EnhancedResolution
@@ -39,8 +43,11 @@ def _setup(app: mech.App, velocities: typing.List[float], input_dict: typing.Dic
     bearing.DampingC12.Output.SetDiscreteValue(0, Quantity(input_dict["c12"]))
     bearing.DampingC21.Output.SetDiscreteValue(0, Quantity(input_dict["c21"]))
 
-    rotational_velocity = DataModel.GetObjectsByType(DataModelObjectCategory.RotationalVelocity)
-    for i in range(len(velocities)):
+    num_speeds = len(velocities)
+    analysis_settings = Model.Analyses[0].AnalysisSettings
+    analysis_settings.ModalNumberOfPoints = num_speeds
+    rotational_velocity = DataModel.GetObjectsByType(DataModelObjectCategory.RotationalVelocity)[0]
+    for i in range(num_speeds):
         rotational_velocity.YComponent.Output.SetDiscreteValue(i, Quantity(velocities[i], "rad/s"))
 
 
@@ -51,7 +58,20 @@ def _get_output(app) -> typing.Tuple[float, float, float, float]:
         - Deformation minimum (mm)
         - Deformation standard deviation (mm)
     """
-    return 0., 0., 0., 0.
+
+    solution = Model.Analyses[0].Solution
+    solution_time = solution.ElapsedRunTime
+    deformation = DataModel.GetObjectsByType(DataModelObjectCategory.TotalDeformation)[0]
+    plot_data = deformation.PlotData
+    nodal_deformations = plot_data["Values"]
+    length_unit = nodal_deformations.Unit
+    assert length_unit == "m", "Plot data expected in meters. If it isn't, unit conversion is needed here!"
+    list_deformations = list(nodal_deformations)
+    np_deformations = np.array(list_deformations)*1000.
+    std=np.std(np_deformations)
+    min=np.min(np_deformations)
+    max=np.max(np_deformations)
+    return solution_time, max, min, std
 
 
 def run(velocities: typing.List[float], mode: int, solve_point: int, model: str, input_dict: typing.Dict[str, str], output: str) -> None:
