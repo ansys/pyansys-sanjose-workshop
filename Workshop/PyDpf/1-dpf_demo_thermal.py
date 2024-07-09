@@ -8,7 +8,7 @@ dpf.start_local_server(r"C:\Program Files\ANSYS Inc\v241")
 Load result file and create model database
 """
 
-path = "transient_thermal.rth"
+path = r"inputs\transient_thermal.rth"
 
 ds = dpf.DataSources(path)
 my_model = dpf.Model(ds)
