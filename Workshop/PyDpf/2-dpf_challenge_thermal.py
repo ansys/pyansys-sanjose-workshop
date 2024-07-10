@@ -23,7 +23,7 @@
 
 -  Hints for Challenge 1: 
     - Import the necessary Modules (already done in Challenge 1)
-    - Create a DPF model from the "transient_thermal.rth" file in the "inputs" folder  (already done in Chalenge 1)
+    - Create a DPF model from the r"inputs\transient_thermal.rth" file in the "inputs" folder  (already done in Chalenge 1)
     - Select the Named Selection named PCB_CONT_2 and Scope it  to corresponding Mesh
     - Choose Results Property – elemental_volume . Scope to Any time point.
     - Generate Contour Plot
@@ -84,7 +84,7 @@ from ansys.dpf.core.plotter import DpfPlotter
 import numpy as np
 
 #choose a version of server
-dpf.start_local_server(r"C:\Program Files\ANSYS Inc\v241")
+# dpf.start_local_server(r"C:\Program Files\ANSYS Inc\v241")
 
 # =========================================================================================
 # Load result file and create model database
